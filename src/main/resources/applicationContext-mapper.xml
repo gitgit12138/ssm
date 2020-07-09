@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<!-- 注解默认是没有开启的，必须在配置中启用注解，base-package用于指定我们需要声明成bean的对象的所在的基本包的。只有指定包下面的注解才会生效 -->
+	<context:component-scan base-package="com.qfedu.mapper"></context:component-scan>
+	
+	<!-- mybatis与Spring整合之后最大的区别就是暂时不需要mybatis-config.xml文件
+	之前mybatis-config.xml的目的就是为了配置sqlsessionfactory，那现在sqlsessionfactory由Spring进行创建
+	将sqlsessionfactory声明为一个bean，那么之前在mybatis-config.xml的相关配置变成对bean属性的依赖注入
+	 -->
+	 
+	 <!-- 初始化数据源,并且使用dbcp连接池，c3p0等连接池步骤相同-->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/day01" />
+		<property name="username" value="root" />
+		<property name="password" value="123" />
+		<!-- 初始化连接大小 -->
+		<property name="initialSize" value="0"></property>
+		<!-- 连接池最大数量 -->
+		<property name="maxActive" value="20"></property>
+		<!-- 连接池最大空闲 -->
+		<property name="maxIdle" value="20"></property>
+		<!-- 连接池最小空闲 -->
+		<property name="minIdle" value="1"></property>
+		<!-- 获取连接最大等待时间 -->
+		<property name="maxWait" value="6000"></property>
+	</bean>
+
+	<!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->
+
+	<!-- 之前我们写在mybatis_confgig中的配置， mappers也需要在这里进行配置 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- dataSource属性是另外一个bean，封装了数据库环境常量 -->
+		<property name="dataSource" ref="dataSource" />
+		<!-- 自动扫描mapping.xml文件 -->
+		<property name="mapperLocations" value="classpath:mapper/*.xml"></property>
+   		<!-- 指定别名，会为包下面的所有类创建别名，这样在mapper.xml文件中就可以直接使用别名 -->
+   		<property name="typeAliasesPackage" value="com.qfedu.pojo" />
+	</bean>
+	
+	<!-- Mybatis MapperScannerConfigurer 自动扫描 将Mapper接口生成代理注入到Spring -->
+   <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+   		<!-- 指定mybatis的接口所在的包 -->
+		<property name="basePackage" value="com.qfedu.mapper" />
+		<!-- 根据sqlSessionFactory属性完成对所有接口的代理，并且将代理类保存到ioc容器中，这里的代理对象可以直接操作数据库 -->
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+   </bean>
+</beans>
