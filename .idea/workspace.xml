@@ -7,11 +7,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f8d6ccf4-6de6-4799-8bbd-efe466e75d85" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/54b7f239-cf82-4a95-89ca-8cd15e6a097e.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/54b7f239-cf82-4a95-89ca-8cd15e6a097e/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -312,7 +307,8 @@
       <workItem from="1594957405985" duration="261000" />
       <workItem from="1594974719625" duration="169000" />
       <workItem from="1595047577900" duration="86000" />
-      <workItem from="1595064207999" duration="681000" />
+      <workItem from="1595064207999" duration="1025000" />
+      <workItem from="1595070033336" duration="301000" />
     </task>
     <task id="LOCAL-00001" summary="firtUpdate">
       <created>1594289841281</created>
@@ -328,7 +324,14 @@
       <option name="project" value="LOCAL" />
       <updated>1594290079376</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="thereUpdate">
+      <created>1595069271791</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1595069271791</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -350,7 +353,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="firtUpdate" />
     <MESSAGE value="twoUpdate" />
-    <option name="LAST_COMMIT_MESSAGE" value="twoUpdate" />
+    <MESSAGE value="thereUpdate" />
+    <option name="LAST_COMMIT_MESSAGE" value="thereUpdate" />
   </component>
   <component name="WindowStateProjectService">
     <state x="184" y="112" width="1071" height="704" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1595069142901">
@@ -361,10 +365,14 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="533" y="166" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1594288769184" />
-    <state x="303" y="52" key="CommitChangelistDialog2" timestamp="1594290079240">
+    <state x="303" y="52" key="CommitChangelistDialog2" timestamp="1595069271583">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="303" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1594290079240" />
+    <state x="303" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1595069271583" />
+    <state x="573" y="357" key="Gitee.ShareDialog" timestamp="1595070052928">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="573" y="357" key="Gitee.ShareDialog/0.0.1440.900@0.0.1440.900" timestamp="1595070052928" />
     <state x="585" y="350" width="270" height="290" key="Github.ShareDialog" timestamp="1594284142261">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -425,14 +433,18 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="258" y="112" key="Maven.ArtifactSearchDialog/0.0.1440.900@0.0.1440.900" timestamp="1594286200184" />
+    <state x="332" y="151" key="NewModule_or_Project.wizard" timestamp="1595069665220">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="332" y="151" key="NewModule_or_Project.wizard/0.0.1440.900@0.0.1440.900" timestamp="1595069665220" />
     <state x="221" y="63" key="SettingsEditor" timestamp="1594302521975">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="221" y="63" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1594302521975" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1594290091375">
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1595069292282">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1594290091375" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1595069292282" />
     <state x="397" y="282" key="com.intellij.ide.util.TipDialog" timestamp="1594282911217">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
