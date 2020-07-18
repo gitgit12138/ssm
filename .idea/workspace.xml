@@ -7,13 +7,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f8d6ccf4-6de6-4799-8bbd-efe466e75d85" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/54b7f239-cf82-4a95-89ca-8cd15e6a097e.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/54b7f239-cf82-4a95-89ca-8cd15e6a097e/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="day01@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+    </expand>
+    <select />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -51,6 +74,7 @@
     <option name="importingSettings">
       <MavenImportingSettings>
         <option name="importAutomatically" value="true" />
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
       </MavenImportingSettings>
     </option>
   </component>
@@ -64,6 +88,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -72,7 +97,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="fileTemplates" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -262,11 +287,6 @@
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
               </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="Finished" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
             </expand>
             <select />
           </treeState>
@@ -285,7 +305,14 @@
       <option name="presentableId" value="Default" />
       <updated>1594282904735</updated>
       <workItem from="1594282908371" duration="553000" />
-      <workItem from="1594283735166" duration="4547000" />
+      <workItem from="1594283735166" duration="5651000" />
+      <workItem from="1594302538291" duration="357000" />
+      <workItem from="1594810290507" duration="87000" />
+      <workItem from="1594955069886" duration="8000" />
+      <workItem from="1594957405985" duration="261000" />
+      <workItem from="1594974719625" duration="169000" />
+      <workItem from="1595047577900" duration="86000" />
+      <workItem from="1595064207999" duration="681000" />
     </task>
     <task id="LOCAL-00001" summary="firtUpdate">
       <created>1594289841281</created>
@@ -294,7 +321,14 @@
       <option name="project" value="LOCAL" />
       <updated>1594289841281</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="twoUpdate">
+      <created>1594290079376</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1594290079376</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -305,7 +339,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -313,21 +349,22 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="firtUpdate" />
-    <option name="LAST_COMMIT_MESSAGE" value="firtUpdate" />
+    <MESSAGE value="twoUpdate" />
+    <option name="LAST_COMMIT_MESSAGE" value="twoUpdate" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="184" y="112" width="1071" height="704" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1594283008572">
+    <state x="184" y="112" width="1071" height="704" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1595069142901">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="184" y="112" width="1071" height="704" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1594283008572" />
+    <state x="184" y="112" width="1071" height="704" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1595069142901" />
     <state x="533" y="166" key="#com.intellij.ide.util.MemberChooser" timestamp="1594288769184">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="533" y="166" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1594288769184" />
-    <state x="303" y="52" key="CommitChangelistDialog2" timestamp="1594289840853">
+    <state x="303" y="52" key="CommitChangelistDialog2" timestamp="1594290079240">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="303" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1594289840853" />
+    <state x="303" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1594290079240" />
     <state x="585" y="350" width="270" height="290" key="Github.ShareDialog" timestamp="1594284142261">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -336,22 +373,22 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="559" y="163" key="Github.UntrackedFilesDialog/0.0.1440.900@0.0.1440.900" timestamp="1594284151339" />
-    <state width="958" height="122" key="GridCell.Tab.0.bottom" timestamp="1594289800271">
+    <state width="468" height="207" key="GridCell.Tab.0.bottom" timestamp="1594301267147">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="958" height="122" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1594289800271" />
-    <state width="958" height="122" key="GridCell.Tab.0.center" timestamp="1594289800270">
+    <state width="468" height="207" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1594301267147" />
+    <state width="468" height="207" key="GridCell.Tab.0.center" timestamp="1594301267145">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="958" height="122" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1594289800270" />
-    <state width="958" height="122" key="GridCell.Tab.0.left" timestamp="1594289800269">
+    <state width="468" height="207" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1594301267145" />
+    <state width="468" height="207" key="GridCell.Tab.0.left" timestamp="1594301267144">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="958" height="122" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1594289800269" />
-    <state width="958" height="122" key="GridCell.Tab.0.right" timestamp="1594289800270">
+    <state width="468" height="207" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1594301267144" />
+    <state width="468" height="207" key="GridCell.Tab.0.right" timestamp="1594301267146">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="958" height="122" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1594289800270" />
+    <state width="468" height="207" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1594301267146" />
     <state width="958" height="122" key="GridCell.Tab.1.bottom" timestamp="1594289800272">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -388,17 +425,29 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="258" y="112" key="Maven.ArtifactSearchDialog/0.0.1440.900@0.0.1440.900" timestamp="1594286200184" />
-    <state x="221" y="63" key="SettingsEditor" timestamp="1594288275576">
+    <state x="221" y="63" key="SettingsEditor" timestamp="1594302521975">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="221" y="63" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1594288275576" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1594289858122">
+    <state x="221" y="63" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1594302521975" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1594290091375">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1594289858122" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1594290091375" />
     <state x="397" y="282" key="com.intellij.ide.util.TipDialog" timestamp="1594282911217">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="397" y="282" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1594282911217" />
+    <state x="301" y="37" width="837" height="825" key="find.popup" timestamp="1595069185186">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="301" y="37" width="837" height="825" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1595069185186" />
+    <state x="425" y="248" key="git4idea.merge.GitPullDialog" timestamp="1595069218325">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="425" y="248" key="git4idea.merge.GitPullDialog/0.0.1440.900@0.0.1440.900" timestamp="1595069218325" />
+    <state x="97" y="147" key="new project wizard" timestamp="1595047643899">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="97" y="147" key="new project wizard/0.0.1440.900@0.0.1440.900" timestamp="1595047643899" />
   </component>
 </project>
