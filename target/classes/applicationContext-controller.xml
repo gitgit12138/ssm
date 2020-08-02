@@ -49,4 +49,23 @@
 	<property name="maxUploadSize" value="1024000"></property>
 	</bean>
 
+<!--	用于自定义拦截器的声明配置-->
+	<mvc:interceptors>
+<!--		将自定义拦截器以bean形式声明在mvc:interceptors中，那么springmvc就会将它作为一个拦截器使用，默认范围是所有的处理器-->
+<!--		<bean id="excuteTime" class="com.qfedu.interceptor.ExcuteTimeInterceptor"></bean>-->
+
+<!--		指定范围-->
+		<mvc:interceptor>
+<!--			拦截范围是包括目录和子目录中的路径-->
+			<mvc:mapping path="/**"/>
+<!--			只表示一个层，当前层的所有路径-->
+<!--			<mvc:mapping path="/*"/>-->
+<!--			exclude-mapping与mapping相反，表示除了指定路径-->
+<!--			<mvc:exclude-mapping path="/*"/>-->
+			<bean id="excuteTime" class="com.qfedu.interceptor.ExcuteTimeInterceptor"></bean>
+
+
+		</mvc:interceptor>
+	</mvc:interceptors>
+
 </beans>

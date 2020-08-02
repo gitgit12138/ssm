@@ -18,7 +18,7 @@
 	 <!-- 初始化数据源,并且使用dbcp连接池，c3p0等连接池步骤相同-->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/day01" />
+		<property name="url" value="jdbc:mysql://localhost:3306/ssm" />
 		<property name="username" value="root" />
 		<property name="password" value="123" />
 		<!-- 初始化连接大小 -->
