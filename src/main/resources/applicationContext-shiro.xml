@@ -15,6 +15,12 @@
         <property name="loginUrl" value="/user/login" />
         <!-- 通过unauthoeizedUrl 指定没有权限操作时跳转页面 -->
         <property name="unauthorizedUrl" value="/refuse.jsp" />
+<!--        声明自定义的过滤器-->
+        <property name="filters">
+            <map>
+                <entry key="hasAnyRoles" value-ref="anyRolesAuthorizationFilter"></entry>
+            </map>
+        </property>
         <!-- 过虑器链定义，从上向下顺序执行，一般将/**放在最下边 -->
         <property name="filterChainDefinitions">
             <value>
@@ -22,7 +28,9 @@
                 /logout = logout
 <!--                配置的角色和权限对于路径的访问-->
                 <!-- roles[XX]表示有XX角色才可访问，[]中可以写多个角色，表示同时拥有才可以访问 -->
-                /user/uList = roles["实训部讲师","咨询师"],authc
+<!--                /user/uList = roles["实训部讲师","咨询师"],authc-->
+                /user/uList = hasAnyRoles["实训部讲师","咨询师"],authc
+
                 <!-- perms[XX]表示有XX权限才可访问 -->
                 /user/uCreate = perms["user:create"],authc
                 <!--对静态资源的匿名访问-->
@@ -57,4 +65,6 @@
         <property name="hashAlgorithmName" value="md5" />
         <property name="hashIterations" value="2" />
     </bean>
+<!--    自定义角色权限过滤器-->
+    <bean class="com.qfedu.filter.AnyRolesAuthorizationFilter" id="anyRolesAuthorizationFilter"></bean>
 </beans>
