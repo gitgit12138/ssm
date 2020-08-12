@@ -1,15 +1,17 @@
 package com.qfedu.realm;
 
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.AuthenticationInfo;
-import org.apache.shiro.authc.AuthenticationToken;
-import org.apache.shiro.authc.SimpleAuthenticationInfo;
+import com.qfedu.pojo.Permission;
+import com.qfedu.pojo.Role;
+import com.qfedu.pojo.User;
+import com.qfedu.service.UserService;
+import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -28,6 +30,10 @@ shiro认证流程
 */
 public class UserRealm extends AuthorizingRealm {
 
+    //因为需要获取处理过的数据库数据所以需要一个UserService对象
+    @Autowired
+    private UserService userService;
+
     /**
      * 设置realm的名称
      * @param name
@@ -39,28 +45,35 @@ public class UserRealm extends AuthorizingRealm {
 
     /**
      * 用于授权
+     * 查询当前用户的所有角色和权限，并且进行授权
      * @param principalCollection
      * @return
      */
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         //获取身份信息
-        String username = (String) principalCollection.getPrimaryPrincipal();
+        User user = (User) principalCollection.getPrimaryPrincipal();
         //根据身份信息从数据库中查询权限数据
-        //这里使用静态模拟，实际需要开发者自己执行sql查询判断
+
+        User userRolePerm = userService.selectUserByUsername(user);
+        System.out.println(userRolePerm);
 
         //封装权限信息
         SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
 
-        //权限
-        Set<String> s = new HashSet<String>();
-        s.add("user:create");
-        s.add("user:update");
-        simpleAuthorizationInfo.setStringPermissions(s);
-
         //角色
-        Set<String> r = new HashSet<String>();
-        r.add("role1");
-        simpleAuthorizationInfo.setRoles(r);
+        Set<String> rolenames = new HashSet<String>();
+        for (Role role:userRolePerm.getRoles()) {
+            rolenames.add(role.getRolename());
+        }
+        simpleAuthorizationInfo.setRoles(rolenames);
+
+        //权限
+        Set<String> pernames = new HashSet<String>();
+        for (Permission permission:userRolePerm.getPerms()) {
+            pernames.add(permission.getPername());
+        }
+        simpleAuthorizationInfo.setStringPermissions(pernames);
+
         return simpleAuthorizationInfo;
     }
 
@@ -76,24 +89,23 @@ public class UserRealm extends AuthorizingRealm {
         第一步从token中取出身份信息
          */
         String userCode = (String) authenticationToken.getPrincipal();
-        System.out.println(userCode);
-//      String userPassword = new String((char[]) authenticationToken.getCredentials());
-//      System.out.println(userPassword);
-
+        //String userPassword = new String((char[]) authenticationToken.getCredentials());
         /*
         第二步根据用户输入的userCode从数据库中进行查询
         如果查询不到返回null
         如果查询到返回认证信息
          */
-        //模拟从数据库中查询到密码
-        Md5Hash md5Hash = new Md5Hash("123","yan",2);
-        String password = md5Hash.toString();
-        System.out.println(password);
-        //模拟从数据库中查询到的盐
-        String salt = "yan";
-        SimpleAuthenticationInfo simpleAuthenticationInfo = new SimpleAuthenticationInfo(userCode,password, ByteSource.Util.bytes(salt),this.getName());
+        User user = userService.selectByUsername(userCode);
 
-        return simpleAuthenticationInfo;
+
+        if (user == null){
+            throw new UnknownAccountException();
+        } else{
+            return new SimpleAuthenticationInfo(user,user.getPassword(),ByteSource.Util.bytes(user.getSalt()),this.getName());
+        }
+
+
+
 
 
     }

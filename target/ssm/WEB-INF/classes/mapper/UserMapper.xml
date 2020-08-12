@@ -5,9 +5,20 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="username" property="username" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="salt" property="salt" jdbcType="VARCHAR" />
+    <collection property="roles" javaType="java.util.List" ofType="role">
+      <id column="rid" property="id" jdbcType="INTEGER" />
+      <result column="rolename" property="rolename" jdbcType="VARCHAR" />
+      <result column="roledesc" property="roledesc" jdbcType="VARCHAR" />
+    </collection>
+    <collection property="perms" javaType="java.util.List" ofType="permission">
+      <id column="pid" property="id" jdbcType="INTEGER" />
+      <result column="pername" property="pername" jdbcType="VARCHAR" />
+      <result column="perdesc" property="perdesc" jdbcType="VARCHAR" />
+    </collection>
   </resultMap>
   <sql id="Base_Column_List" >
-    id, username, password
+    id, username, password, salt
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -23,8 +34,10 @@
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into user (username, password)
-    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR})
+    insert into user (username, password, salt
+      )
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.qfedu.pojo.User" >
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
@@ -38,6 +51,9 @@
       <if test="password != null" >
         password,
       </if>
+      <if test="salt != null" >
+        salt,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="username != null" >
@@ -45,6 +61,9 @@
       </if>
       <if test="password != null" >
         #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null" >
+        #{salt,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -57,13 +76,44 @@
       <if test="password != null" >
         password = #{password,jdbcType=VARCHAR},
       </if>
+      <if test="salt != null" >
+        salt = #{salt,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.qfedu.pojo.User" >
     update user
     set username = #{username,jdbcType=VARCHAR},
-      password = #{password,jdbcType=VARCHAR}
+      password = #{password,jdbcType=VARCHAR},
+      salt = #{salt,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="selectByUsername" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from user where username = #{username}
+  </select>
+  <select id="selectUserAndRolesByUsername" resultMap="BaseResultMap">
+    select
+    u.*,r.id as rid,r.rolename,r.roledesc
+    from user u inner join user_role
+    on u.id = user_role.uid
+    left join role r
+    on user_role.rid = r.id
+    where u.username = #{username}
+  </select>
+  <select id="selectUserByUsername" resultMap="BaseResultMap">
+    select
+    u.*,r.id as rid,r.rolename,r.roledesc,p.id as pid,p.pername,p.perdesc
+    from user u left join user_role
+    on u.id = user_role.uid
+    left join role r
+    on user_role.rid = r.id
+    left join role_permission
+    on r.id = role_permission.rid
+    left join permission p
+    on role_permission.pid = p.id
+    where u.username = #{username}
+  </select>
 </mapper>

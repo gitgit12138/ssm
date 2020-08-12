@@ -14,7 +14,10 @@
   </context-param>
 
   <!-- shiro过虑器，DelegatingFilterProxy通过代理模式将spring容器中的bean和filter关联起来 -->
-<!--  其实会引用一组过滤器，有做认证的，有做授权的-->
+<!--  其实会引用一组过滤器，有做认证的，有做授权的
+PermissionsAuthorizationFilter 授权
+FormAuthenticationFilter 认证
+-->
   <filter>
     <filter-name>shiroFilter</filter-name>
     <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
@@ -56,6 +59,7 @@
     <servlet-name>springDispatcherServlet</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
+
   <filter>
     <filter-name>encodingFilter</filter-name>
     <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
