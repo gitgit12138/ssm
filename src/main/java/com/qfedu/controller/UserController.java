@@ -5,6 +5,7 @@ import com.qfedu.service.UserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
+import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,7 @@ public class UserController {
 
     /**
      * 登陆提交地址，和applicationContext-shiro.xml中配置的loginurl一致
+     * 你可以把这个处理器理解为一个认证失败的处理器，因为认证成功之后不会再访问这个处理器，直接会跳转到认证成功的界面
      * @param req
      * @return
      */
@@ -58,6 +60,9 @@ public class UserController {
     @RequestMapping("/uList")
     public String uList(){
         System.out.println("访问用户列表成功");
+        //根据凭证获取保存在session中的用户
+        User user = (User) SecurityUtils.getSubject().getPrincipal();
+        //System.out.println(user);
         return "forward:/index.jsp";
     }
 

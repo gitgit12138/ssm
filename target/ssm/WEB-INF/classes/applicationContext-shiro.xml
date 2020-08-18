@@ -9,12 +9,13 @@
         <property name="securityManager" ref="securityManager" />
         <!-- loginUrl认证提交地址，如果没有认证将会请求此地址进行认证，请求此地址将由formAuthenticationFilter进行表单认证 -->
 <!--
-        路径有两种方式，第一种指向一个处理器，第二种指向表单页面.
-        如果为表单页面，那么需要手动进行表单认证(利用subject.login())，不会经过formAuthenticationFilter进行表单认证
+        路径有两种方式，第一种指向一个处理器，第二种指向表单页面。尽量使用处理器的路径
+        如果为表单页面，那么需要手动进行表单认证(利用subject.login())
 -->
         <property name="loginUrl" value="/user/login" />
         <!-- 通过unauthoeizedUrl 指定没有权限操作时跳转页面 -->
         <property name="unauthorizedUrl" value="/refuse.jsp" />
+<!--        声明自定义的过滤器-->
         <property name="filters">
             <map>
                 <entry key="hasAnyRoles" value-ref="anyRolesAuthorizationFilter"></entry>
@@ -50,6 +51,8 @@
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
 <!--        指定自定义域-->
         <property name="realm" ref="userRealm" />
+        <property name="cacheManager" ref="cacheManager"></property>
+        <property name="sessionManager" ref="sessionManager"></property>
     </bean>
 
     <!-- 自定义 realm -->
@@ -66,4 +69,18 @@
     </bean>
 <!--    自定义角色权限过滤器-->
     <bean class="com.qfedu.filter.AnyRolesAuthorizationFilter" id="anyRolesAuthorizationFilter"></bean>
+
+    <!-- 缓存管理器 -->
+    <bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+        <property name="cacheManagerConfigFile" value="classpath:shiro-ehcache.xml"/>
+    </bean>
+
+<!--    和shiro整后，使用shiro的session 管理。shiro提供了sessionDao操作，sessionDao操作会话 数据。 -->
+    <!-- 会话管理器 -->
+    <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+        <!-- session的失效时长，单位毫秒 -->
+        <property name="globalSessionTimeout" value="600000"/>
+        <!-- 删除失效的session -->
+        <property name="deleteInvalidSessions" value="true"/>
+    </bean>
 </beans>

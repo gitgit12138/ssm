@@ -4,6 +4,7 @@ import com.qfedu.pojo.Permission;
 import com.qfedu.pojo.Role;
 import com.qfedu.pojo.User;
 import com.qfedu.service.UserService;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
@@ -55,7 +56,7 @@ public class UserRealm extends AuthorizingRealm {
         //根据身份信息从数据库中查询权限数据
 
         User userRolePerm = userService.selectUserByUsername(user);
-        System.out.println(userRolePerm);
+        //System.out.println(userRolePerm);
 
         //封装权限信息
         SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
@@ -101,12 +102,17 @@ public class UserRealm extends AuthorizingRealm {
         if (user == null){
             throw new UnknownAccountException();
         } else{
+            //此时已经把user保存到shiro的session中
             return new SimpleAuthenticationInfo(user,user.getPassword(),ByteSource.Util.bytes(user.getSalt()),this.getName());
         }
 
 
+    }
 
-
-
+    //如果修改了用户的权限，而用户不退出系统，修改的权限无法立即生效。
+    //清除缓存,在service中，权限修改后调用
+    public void clearCached() {
+        PrincipalCollection principals = SecurityUtils.getSubject().getPrincipals();
+        super.clearCache(principals);
     }
 }
