@@ -44,12 +44,13 @@
    		<!-- 指定别名，会为包下面的所有类创建别名，这样在mapper.xml文件中就可以直接使用别名 -->
    		<property name="typeAliasesPackage" value="com.qfedu.pojo" />
 	</bean>
-	
+
 	<!-- Mybatis MapperScannerConfigurer 自动扫描 将Mapper接口生成代理注入到Spring -->
-   <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-   		<!-- 指定mybatis的接口所在的包 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!-- 指定mybatis的接口所在的包 -->
 		<property name="basePackage" value="com.qfedu.mapper" />
 		<!-- 根据sqlSessionFactory属性完成对所有接口的代理，并且将代理类保存到ioc容器中，这里的代理对象可以直接操作数据库 -->
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
-   </bean>
+    </bean>
+
 </beans>

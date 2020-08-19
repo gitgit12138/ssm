@@ -5,6 +5,13 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
 
+<!--  在服务器启动时，运行了两个容器，一个是spring的ioc容器，一个是初始化前端控制器的springmvc的ioc容器。
+springmvc的容器是spring容器的子集，也就是说springmvc可以使用Spring容器中创建的对象
+那么如果两个配置文件的扫描包配置一样，例如都为com.qfedu，会出现重复扫描的情况
+引发：1.重复创建bean对象，例如重复创建两个service层对象
+2.造成事务不生效的情况，因为有两个service，所以事务配置不知道到底在哪一个service中生效，也就会出现不生效的情况
+-->
+
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
